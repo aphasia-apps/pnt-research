@@ -45,6 +45,7 @@ observed <- read_csv(col_types = cols(), here("dev", "pnt-old", "validation", "v
   select(examinee, item, response)
 
 examinees <- unique(observed$examinee)
+examinees <- examinees[1]
 print(paste0("The number of participants to test is ", length(examinees)))
 print("This test can take around 10 minutes")
 pb <- progress_bar$new(
@@ -52,7 +53,6 @@ pb <- progress_bar$new(
   total = length(examinees), clear = FALSE, width= 60, force = T)
 pb$tick(0)
 
-i = examinees
 for(i in examinees){
   # start the test
   app <- ShinyDriver$new(here())
@@ -67,6 +67,7 @@ for(i in examinees){
   # 30 items
   app$setInputs(numitems = "175")
   # next
+  app$setInputs(eskimo = F)
   app$setInputs(glide_next2 = "click")
   
   # click to get started
@@ -159,7 +160,12 @@ together <- observed %>%
   full_join(shiny, by = c("examinee", "target")) %>%
   select(examinee, target, response, obs_response)
 
+
 write.csv(together, here("tests", "agreement_data", paste0(Sys.Date(), "_175_shiny_vs_observed.csv")))
+
+print(
+  together %>% group_by(examinee) %>% summarize(across(2:3, sum))
+)
 
 test_that("Full PNT test of all responses", {
   print("Full PNT test of equivalent responses")
