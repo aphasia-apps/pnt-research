@@ -16,7 +16,7 @@ First, download the package:
 
 ```{r, eval = F}
 install.packages("remotes")
-remotes::install_github("aphasia-apps/pnt.research")
+remotes::install_github("aphasia-apps/pnt-research")
 ```
 
 Then, run the app using the built in function
