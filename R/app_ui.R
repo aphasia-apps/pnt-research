@@ -25,11 +25,6 @@ app_ui <- function(request) {
       
       navbarPage(title = pagetitle(),
                  id = "mainpage",
-                 # footer = tags$div(
-                 #   id = "footer_id",
-                 #   class = "footer",
-                 #   footer_div()
-                 # ),
                  theme = minimal_theme(),
                  
                  ############################ Instructions ############################## 
@@ -62,12 +57,6 @@ app_ui <- function(request) {
                  
                  tabPanelBody(value = "Results", 
                               results_tab_div()
-                 ),
-                 
-                 ############################ Rescored Results ###########################
-                 
-                 tabPanelBody(value = "Results2", 
-                              results_tab_div2()
                  )
                  
                  ########################################################################

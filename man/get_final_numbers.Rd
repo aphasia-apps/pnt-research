@@ -4,7 +4,7 @@
 \alias{get_final_numbers}
 \title{final numbers}
 \usage{
-get_final_numbers(out, previous, num_previous)
+get_final_numbers(out)
 }
 \arguments{
 \item{out}{out}

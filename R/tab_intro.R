@@ -23,14 +23,13 @@ intro_tab_div <- function(){
                                  )
                                ),br(),
                                fluidRow(
-                                   column(width = 10, offset = 1,
+                                   column(width = 6, offset = 3,
                                           includeMarkdown(
                                                 system.file("app/www/intro.md",
-                                                 package = "pnt")
+                                                 package = "pnt.research")
                                    ),
                                    div(align="center",
                                        actionButton("administer_test", "Administer PNT"),
-                                       actionButton("score_test", "Score offline test")
                                    ))
                                )
                   ),
@@ -61,37 +60,14 @@ intro_tab_div <- function(){
                                                 choices = c("10-item PNT-CAT" = "10",
                                                             "30-item PNT-CAT" = "30",
                                                             "60-item PNT-CAT" = "60",
-                                                            "100-item PNT-CAT" = "100",
-                                                            "Variable length PNT-CAT" = "SEM",
-                                                            "175-item full PNT" = "175",
-                                                            "30-item short-form PNT" = "walker"), #Precision" = "SEM"),
+                                                            "175-item full PNT" = "175"),
                                                 selected = "10",
                                                 inline = F),
-                                   # sets SEM precision. disabled if SEM not selected in numitems radio buttons
-                                   shinyjs::hidden(
-                                     sliderInput("ci_95", "Minimum acceptable 95% CI",
-                                                 min = 2,
-                                                 max = 10,
-                                                 step = 0.5,
-                                                 value = 4)
-                                     ),
                                    # randomize PNT order if doing the full 175 item test?
                                    shinyjs::hidden(
                                      checkboxInput("random",
                                                    "Random Order (175 only)",
                                                    value = F)
-                                   ),
-                                   shinyjs::hidden(
-                                     checkboxInput("exclude_previous",
-                                                   "Exclude items from the previous test?",
-                                                   value = F)
-                                   ),
-                                   shinyjs::hidden(
-                                     radioButtons("walker",
-                                                   "Choose 30-item short form",
-                                                  choices = c("A", "B"),
-                                                  selected = "A"
-                                                    )
                                    ),
                                    shinyjs::hidden(
                                      checkboxInput("eskimo",

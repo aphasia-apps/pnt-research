@@ -13,23 +13,9 @@ pagetitle <- function(){
      title = div(
        div("PNT-CAT"),
        div(id = "navbar-right",
-           shinyjs::hidden(
-             downloadButton("report",
-                            "Download Report",
-                            style = "background-color:#f8f9fa; border:0px;")
-           ),
+           
            shinyjs::hidden(
              downloadButton("downloadData",
-                            "Download results",
-                            style = "background-color:#f8f9fa; border:0px;")
-           ),
-           shinyjs::hidden(
-             downloadButton("rescore_report",
-                            "Download Report",
-                            style = "background-color:#f8f9fa; border:0px;")
-           ),
-           shinyjs::hidden(
-             downloadButton("rescore_downloadData",
                             "Download results",
                             style = "background-color:#f8f9fa; border:0px;")
            ),
@@ -39,20 +25,6 @@ pagetitle <- function(){
                           icon = icon("undo-alt"),
                           style = "background-color:#f8f9fa; border:0px;")
            ),
-           shinyjs::hidden(
-             actionButton(
-             inputId = "help",
-             label = "Help",
-             icon = icon("question-circle"),
-             style = "background:transparent; border:none;"
-             )
-           ),
-           actionButton(
-             inputId = "info",
-             label = "About",
-             icon = icon("info-circle"),
-             style = "background:transparent; border:none;"
-          ),
            actionButton(
              inputId='source',
              label="",#Source Code",

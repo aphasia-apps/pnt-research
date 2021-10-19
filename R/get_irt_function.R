@@ -13,7 +13,7 @@
 #' @param previous prev if
 #' @param test test
 #' @export
-irt_function <- function(all_items, IRT = T, exclude_previous = F, previous, test = NA, exclude_eskimo = T){
+irt_function <- function(all_items, IRT = T,  test = NA, exclude_eskimo = T){
 
       # this is for the out argument. 
       # creates a vector of the items that have already been completed
@@ -21,22 +21,6 @@ irt_function <- function(all_items, IRT = T, exclude_previous = F, previous, tes
       completed = all_items %>% 
         tidyr::drop_na(response) %>%
         dplyr::pull(item_number)
-
-      
-      
-      # don't re-use previous items
-      if(exclude_previous){
-        previously_completed = previous %>%
-          # this section limits ignoring to only the previous test
-                                dplyr::group_by(date) %>%
-                                dplyr::mutate(num = cur_group_id()) %>%
-                                dplyr::filter(num == max(num)) %>%
-        # selects only done items and grabs them.
-                                tidyr::drop_na(response) %>%
-                                dplyr::pull(item_number)
-          
-        completed = c(completed, previously_completed)
-      }
       
       # dataframe of inputs
       pars = data.frame(a = all_items$discrimination,
@@ -53,11 +37,11 @@ irt_function <- function(all_items, IRT = T, exclude_previous = F, previous, tes
        # ability estimate using bayes modal:
       # 10-6 CHANGING TO T ESTIMATES
       
-       ability = catR::thetaEst(bank, x, method = "EAP", parInt = c(5, 95, 33), priorPar = c(50,10))
+       ability = catR::thetaEst(bank, x, method = "EAP")
        # generates the next item
        # standard error of the mean
        # CHANGE FOR T-SCORE HERE
-       sem = catR::semTheta(ability, bank, x, method = "EAP", parInt = c(5, 95, 33), priorPar = c(50,10))
+       sem = catR::semTheta(ability, bank, x, method = "EAP")
        
        if(IRT){
          # removes eskimo
@@ -66,7 +50,7 @@ irt_function <- function(all_items, IRT = T, exclude_previous = F, previous, tes
          next_item = if(length(completed)<174){
            # CHANGE FOR T SCORE HERE
            catR::nextItem(itemBank = bank, theta = ability, out = completed,
-                          method = "EAP", range = c(5, 95), priorPar = c(50,10))
+                          method = "EAP")
          } else {
            NA
          }

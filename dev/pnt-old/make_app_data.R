@@ -40,23 +40,25 @@ starting_items <- c(130, 25, 39, 154) # are 0.02 or -0.02. closest to 0.
 
 ### UPDATE TO T SCALE. importing new file and replacing old item difficulty and discrimination columns with new estimates
 # updated 10/6/21
-
-tscale <- read.csv(here("dev","pnt-old", "data", "pnt_Tscaled_item_parameters_2021_10_04.csv"))
-colnames(tscale) <- c("ignore", "id", "target", "discrimination", "itemDifficulty")
-tscale<-tscale[,3:5]
-
-items <- items %>% 
-  dplyr::select(-itemDifficulty, -discrimination) %>%
-  left_join(tscale, by = "target") %>%
-  select(target, itemDifficulty, discrimination, slide_num:pnt_order)
+# 
+# tscale <- read.csv(here("dev","pnt-old", "data", "pnt_Tscaled_item_parameters_2021_10_04.csv"))
+# colnames(tscale) <- c("ignore", "id", "target", "discrimination", "itemDifficulty")
+# tscale<-tscale[,3:5]
+# 
+# items <- items %>% 
+#   dplyr::select(-itemDifficulty, -discrimination) %>%
+#   left_join(tscale, by = "target") %>%
+#   select(target, itemDifficulty, discrimination, slide_num:pnt_order)
 
 item_key <- items %>%
   dplyr::select(target, slide_num, itemDifficulty, walker, walker_order) %>%
   arrange(target)
 
-### thetas for generating the results histogram:
+thetas = 1
 
-thetas <- read_csv(here("dev","pnt-old", "data", "thetas_Tscaled_MAPPDn296_R03n39_2021_10_04.csv"))$mean
+### thetas for generating the results histogram:
+# 
+# thetas <- read_csv(here("dev","pnt-old", "data", "thetas_Tscaled_MAPPDn296_R03n39_2021_10_04.csv"))$mean
 
 # Saves the data as an internal data file. 
 # uncomment to update app data. 
@@ -69,6 +71,6 @@ thetas <- read_csv(here("dev","pnt-old", "data", "thetas_Tscaled_MAPPDn296_R03n3
 #                   end_test_key,
 #                   enter,
 #                   response_keys,
-#                   starting_items, 
+#                   starting_items,
 #                   thetas)
 

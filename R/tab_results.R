@@ -3,16 +3,25 @@
 results_tab_div <- function(){
   fluidRow(
   column(width = 8,offset = 2,
-         tabsetPanel(type = "pills",
-                     tabPanel("Summary",br(),
-                              uiOutput("results_summary"), 
-                              plotOutput("plot"),
-                              tags$em("Red line reflects current estimate. Shaded area reflects uncertainty in current estiate.\n The average ability for individuals with aphasia is 50, with a standard deviation of 10.")
-                     ),
-                     tabPanel("Data", 
-                              DT::DTOutput("results_table"),
-                     )
+         tabsetPanel(
+           tabPanel("Test Completed",
+             div(align = "center",
+                 br(),br(), br(), br(), br(), br(),
+               h1("Test Completed!"),br(),br(),
+                 div(style = "font-size:6em;",
+                    icon("thumbs-up")
+                 )
+               )
+           ),
+           tabPanel("Results",
+             div(
+               div(align = "center", br(), 
+                uiOutput("text_summary")
+               ),
+               DT::DTOutput("results_table"),
+              )
+           )
          )
       )
-    )
+  )
 }

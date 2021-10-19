@@ -4,25 +4,18 @@
 \alias{irt_function}
 \title{irt magic function}
 \usage{
-irt_function(
-  all_items,
-  IRT = T,
-  exclude_previous = F,
-  previous,
-  test = NA,
-  exclude_eskimo = T
-)
+irt_function(all_items, IRT = T, test = NA, exclude_eskimo = T)
 }
 \arguments{
 \item{all_items}{everything}
 
 \item{IRT}{irt yes no}
 
+\item{test}{test}
+
 \item{exclude_previous}{like name}
 
 \item{previous}{prev if}
-
-\item{test}{test}
 }
 \description{
 irt magic function
