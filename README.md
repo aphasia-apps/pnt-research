@@ -17,7 +17,7 @@ First, download the package:
 
 ``` r
 install.packages("remotes")
-remotes::install_github("aphasia-apps/pnt")
+remotes::install_github("aphasia-apps/pnt.research")
 ```
 
 Then, run the app using the built in function

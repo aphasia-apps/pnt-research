@@ -17,7 +17,7 @@ for(i in dirs){
 # best to pick one or the other
 # pnt-175 need to get data for. also takes a while...
 #test = c("pnt-175", "pnt-30")
-test = c("pnt-175")#, "pnt-175")
+test = c("pnt-30", "pnt-175")
 
 shinytest::testApp(here::here(),testnames = test, compareImages = FALSE, interactive = FALSE)
 
