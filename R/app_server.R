@@ -35,16 +35,8 @@ app_server <- function( input, output, session ) {
     updateTabsetPanel(session, "glide", "glide1")
   })
   
-  observeEvent(input$glide_back0,{
-    updateTabsetPanel(session, "glide", "glide0")
-  })
-  
-  observeEvent(input$glide_next1,{
-    updateTabsetPanel(session, "glide", "glide2")
-  })
-  
   observeEvent(input$glide_back1,{
-    updateTabsetPanel(session, "glide", "glide1")
+    updateTabsetPanel(session, "glide", "glide0")
   })
   
   observeEvent(input$glide_next2,{
@@ -52,7 +44,7 @@ app_server <- function( input, output, session ) {
   })
   
   observeEvent(input$glide_back2,{
-    updateTabsetPanel(session, "glide", "glide2")
+    updateTabsetPanel(session, "glide", "glide1")
   })
   ################################ SOUND ON ##### ##############################
   
@@ -177,6 +169,9 @@ app_server <- function( input, output, session ) {
     # got to slides
     # reset keyval
     values$key_val = NULL # keeps track of button press 1 (error) or 2 (correct)
+    if (isTRUE(getOption("shiny.testmode"))) {
+      shinyjs::reset("keys")
+    }
     updateNavbarPage(session, "mainpage", selected = "Assessment")
   })
   
@@ -243,6 +238,9 @@ app_server <- function( input, output, session ) {
         values$i = ifelse(values$i<13, values$i + 1, values$i)
       }
       values$key_val = NULL
+      if (isTRUE(getOption("shiny.testmode"))) {
+        shinyjs::reset("keys")
+      }
     } else {
       # can you download data? yes - will calculate the data to go out. 
       values$downloadableData = T
@@ -332,7 +330,7 @@ app_server <- function( input, output, session ) {
       values$key_val = NULL
       #for testing::
       if (isTRUE(getOption("shiny.testmode"))) {
-        reset("keys")
+        shinyjs::reset("keys")
       }
     }
     # don't run this on start up. 

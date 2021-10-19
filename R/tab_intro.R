@@ -39,20 +39,6 @@ intro_tab_div <- function(){
                                    h5("Input participant information"), br(),
                                    textInput("name", "Enter a Name"),
                                    textInput("notes", "Enter any notes"),
-                                   fileInput("file1", "Upload previous results", accept = ".csv"),
-                                   div(align="center",
-                                       actionButton("glide_back0", "Back"),
-                                       actionButton("glide_next1", "Next")
-                                       
-                                       )
-                                   
-                                   
-                               )
-                           )
-                  ),
-                  tabPanelBody(value = "glide2",
-                           div(align = "center",
-                               div(style="display: inline-block; text-align: left;",
                                    h5("Choose test options"), br(),
                                    ### Use this to set how many items to run.
                                    radioButtons(inputId = "numitems",
@@ -71,8 +57,8 @@ intro_tab_div <- function(){
                                    ),
                                    shinyjs::hidden(
                                      checkboxInput("eskimo",
-                                                  'Exclude item "Eskimo"',
-                                                  value = T
+                                                   'Exclude item "Eskimo"',
+                                                   value = T
                                      )
                                    ),
                                    checkboxInput("sound",
@@ -82,6 +68,7 @@ intro_tab_div <- function(){
                                        actionButton("glide_back1", "Back"),
                                        actionButton("glide_next2", "Next")
                                    )
+                                   
                                )
                            )
                   ),
