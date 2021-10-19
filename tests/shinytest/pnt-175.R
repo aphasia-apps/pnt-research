@@ -45,7 +45,7 @@ observed <- read_csv(col_types = cols(), here("dev", "pnt-old", "validation", "v
   select(examinee, item, response)
 
 examinees <- unique(observed$examinee)
-examinees <- examinees[1]
+#examinees <- examinees[1]
 print(paste0("The number of participants to test is ", length(examinees)))
 print("This test can take around 10 minutes")
 pb <- progress_bar$new(
