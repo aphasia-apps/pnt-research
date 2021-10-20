@@ -23,7 +23,7 @@ License: AGPL (>= 3)
 Imports: 
     config (>= 0.3.1),
     golem (>= 0.3.1),
-    shiny (>= 1.7.0),
+    shiny (>= 1.6.0),
     catR,
     dplyr,
     DT,
@@ -34,7 +34,7 @@ Imports:
     tibble,
     tidyr,
     magrittr,
-    bslib (>= 0.3.0),
+    bslib (>= 0.2.5),
     pkgload
 Encoding: UTF-8
 LazyData: true
