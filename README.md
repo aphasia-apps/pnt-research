@@ -29,3 +29,29 @@ pnt.research::run_app()
 
 By running the app locally, there are no issues with app-timeout or
 server costs or maintenance.
+
+Note, the app can also be run with the following:
+
+``` r
+shiny::runGitHub("aphasia-apps/pnt-research")
+```
+
+However, you will need to make sure all of the packages are installed/up
+to date first:
+
+    Imports: 
+        config (>= 0.3.1),
+        golem (>= 0.3.1),
+        shiny (>= 1.7.0),
+        catR,
+        dplyr,
+        DT,
+        here,
+        keys,
+        shinyjs,
+        shinyWidgets,
+        tibble,
+        tidyr,
+        magrittr,
+        bslib (>= 0.3.0),
+        pkgload
